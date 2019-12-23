@@ -2,9 +2,9 @@
     <div>
 
         <Chart :chart="chart"></Chart>
-        <textarea style="width:500px;height:500px" v-model="chartText"></textarea>
+        <h1>json option 参考 <a href="https://chartcube.alipay.com/" target="_blank" >图表魔方</a></h1>
+        <textarea style="width:600px;height:400px" v-model="chartText"></textarea>
     </div>
-
 </template>
 
 <script>
@@ -184,11 +184,15 @@
         computed: {
             chart() {
                 if (this.chartText) {
-                    return JSON.parse(this.chartText)
+                    try {
+                        return JSON.parse(this.chartText)
+                    } catch (e) {
+                        console.log("not json string")
+                        return chart
+                    }
                 } else {
                     return chart
                 }
-
             }
         }
     }
