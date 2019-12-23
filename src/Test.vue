@@ -1,7 +1,7 @@
 <template>
     <div>
-        <C1 :chart="chart"></C1>
-        <iframe src="https://chartcube.alipay.com/" style="width:100%;height: 500px"></iframe>
+
+        <Chart :chart="chart"></Chart>
         <textarea style="width:500px;height:500px" v-model="chartText"></textarea>
     </div>
 
@@ -9,8 +9,7 @@
 
 <script>
 
-    import C1 from "./components/C1";
-
+    import {Chart} from 'g2plot-chart'
     const chart = {
         "id": "u-df5b-f26",
         "configs": {
@@ -176,17 +175,17 @@
 
     export default {
         name: 'Test',
-        components: {C1},
+        components: {Chart},
         data() {
             return {
-                chartText:''
+                chartText: ''
             }
         },
         computed: {
-            chart(){
-                if (this.chartText){
+            chart() {
+                if (this.chartText) {
                     return JSON.parse(this.chartText)
-                }else {
+                } else {
                     return chart
                 }
 
